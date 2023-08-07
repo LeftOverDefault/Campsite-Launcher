@@ -10,7 +10,9 @@ function readTextFile(file, callback) {
     rawFile.send(null);
 }
 
+
 function loadFromUrl() {
+
     readTextFile("../app/data/games.json", function (text) {
         let data = JSON.parse(text);
         for (let i = 0; i < Object.keys(data["browse"]).length; i++) {
@@ -18,18 +20,24 @@ function loadFromUrl() {
             createBrowseName(i, data["browse"][i]["name"]);
             createBrowseDescription(i, data["browse"][i]["description"]);
         }
-        for (let i = 0; i < Object.keys(data["library"]).length; i++) {
-            createLibraryIcon(i, data["library"][i], document.getElementById("sidenav-group-0"))
-            let j = 0;
-            if (document.getElementById("library-group-" + j.toString()).childElementCount == 5) {
-                console.log("element full");
-                j++;
-                createLibraryImage(i, data["library"][i], document.getElementById("library-group-" + j.toString()));
-            } else {
-                let group = document.getElementById("library-group-" + j.toString());
-                console.log(group)
-                createLibraryImage(i, data["library"][i], document.getElementById("library-group-" + j.toString()));
+        let library = document.querySelector(".library");
+        let i = 0;
+        for (let j = 0; j < Object.keys(data["library"]).length; j++) {
+            let libraryGroup = document.createElement("div");
+            libraryGroup.setAttribute("class", "library-group");
+            libraryGroup.setAttribute("id", "library-group-" + i.toString());
+            if (document.getElementById("sidenav-group-0").childElementCount != 9) {
+                createLibraryIcon(j, data["library"][j], document.getElementById("sidenav-group-0"))
             }
+
+            if (libraryGroup.childElementCount % 5 == 0) {
+                createLibraryImage(j, data["library"][j], libraryGroup);
+            } else {
+                createLibraryImage(j, data["library"][j], libraryGroup);
+            }
+            i++;
+            console.log(libraryGroup.childElementCount);
+            library.appendChild(libraryGroup);
         }
     });
 

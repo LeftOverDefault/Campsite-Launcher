@@ -35,6 +35,10 @@ body {
     overflow-x: hidden;
 }
 
+html {
+    overflow: hidden;
+}
+
 ::-webkit-scrollbar {
     display: none;
 }
@@ -192,6 +196,8 @@ body {
 
 .browse {
     position: absolute;
+    height: (100% - 60px);
+    overflow: hidden;
     left: -110%;
     visibility: hidden;
     background: var(--light);
@@ -207,6 +213,7 @@ body {
 }
 
 .browse.active {
+    overflow: auto;
     left: 0;
     visibility: visible;
 }
@@ -293,6 +300,8 @@ body {
 .library {
     position: absolute;
     background: var(--light);
+    overflow: hidden;
+    height: calc(100% - 80px);
     visibility: hidden;
     right: -110%;
     display: flex;
@@ -307,6 +316,7 @@ body {
 }
 
 .library.active {
+    overflow-y: visible;
     right: 0;
     visibility: visible;
 }
