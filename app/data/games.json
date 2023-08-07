@@ -1,4 +1,45 @@
 {
-    "0": "https://github.com/LeftOverDefault/Summer-Project/blob/main/",
-    "1": "https://github.com/LeftOverDefault/Campsite-Launcher/blob/master/app/img/"
+    "browse": {
+        "0": {
+            "name": "Summer Project",
+            "description": "Description of Summer Project",
+            "url": "https://github.com/LeftOverDefault/Summer-Project/blob/main/properties/"
+        },
+        "1": {
+            "name": "Summer Project",
+            "description": "Description of Summer Project",
+            "url": "https://github.com/LeftOverDefault/Summer-Project/blob/main/properties/"
+        },
+        "2": {
+            "name": "Summer Project",
+            "description": "Description of Summer Project",
+            "url": "https://github.com/LeftOverDefault/Summer-Project/blob/main/properties/"
+        }
+    },
+    "library": {
+        "0": {
+            "name": "Summer Project",
+            "url": "https://github.com/LeftOverDefault/Summer-Project/blob/main/properties/"
+        },
+        "1": {
+            "name": "Summer Project",
+            "url": "https://github.com/LeftOverDefault/Summer-Project/blob/main/properties/"
+        },
+        "2": {
+            "name": "Summer Project",
+            "url": "https://github.com/LeftOverDefault/Summer-Project/blob/main/properties/"
+        },
+        "3": {
+            "name": "Summer Project",
+            "url": "https://github.com/LeftOverDefault/Summer-Project/blob/main/properties/"
+        },
+        "4": {
+            "name": "Summer Project",
+            "url": "https://github.com/LeftOverDefault/Summer-Project/blob/main/properties/"
+        },
+        "5": {
+            "name": "Summer Project",
+            "url": "https://github.com/LeftOverDefault/Summer-Project/blob/main/properties/"
+        }
+    }
 }
