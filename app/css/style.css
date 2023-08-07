@@ -1,0 +1,223 @@
+:root {
+    --white: #eff3ed;
+    --black: #0b0c0c;
+    --dark: #1d1e22;
+    --light: #282929;
+    --primary: #af7cf1;
+    --secondary: #9957ad;
+    --info: #9e7afa;
+    --accent1: #51a0d2;
+    --accent2: #91c2de;
+    --accent3: #f8fcfd;
+    --success: #1e9a5e;
+    --warning: #dec921;
+    --danger: #ea2410;
+
+    --border-radius: 6px;
+}
+
+@font-face {
+    font-family: Font;
+    src: url(../font/font.ttf);
+}
+
+* {
+    margin: 0;
+    font-family: Font;
+}
+
+html,
+body {
+    height: 100%;
+    width: 100%;
+    background: var(--light);
+}
+
+::-webkit-scrollbar {
+    display: none;
+}
+
+.sidenav {
+    background: var(--dark);
+    width: 60px;
+    height: 100%;
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    z-index: 3;
+}
+
+.sidenav .sidenav-group {
+    width: 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.sidenav .sidenav-group .sidenav-item {
+    width: 50px;
+    height: 50px;
+    color: var(--white);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: var(--border-radius);
+    transition: background 0.25s ease;
+    cursor: pointer;
+}
+
+.sidenav .sidenav-group .sidenav-item:hover {
+    background: var(--light);
+}
+
+.sidenav .sidenav-group .sidenav-item i.sidenav-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: var(--border-radius);
+    font-size: 1.6rem;
+    width: 40px;
+    height: 40px;
+}
+
+.sidenav .sidenav-group .sidenav-item img.sidenav-icon {
+    width: 40px;
+    height: 40px;
+    padding: 5px;
+    border-radius: var(--border-radius);
+}
+
+.sidenav .sidenav-group .sidenav-item .sidenav-tooltip {
+    position: absolute;
+    width: 100px;
+    height: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    left: 70px;
+    padding: 5px;
+    background: var(--light);
+    border-radius: var(--border-radius);
+    user-select: none;
+    font-size: 1rem;
+    font-weight: 500;
+    visibility: hidden;
+    color: var(--white);
+    opacity: 0;
+    z-index: 4;
+    transition: opacity 0.25s ease;
+}
+
+.sidenav .sidenav-group .sidenav-item:hover .sidenav-tooltip {
+    opacity: 1;
+    visibility: visible;
+    transition: opacity 0.25s ease;
+    box-shadow: 0px 0px 5px #00000075;
+}
+
+.navbar {
+    position: fixed;
+    background: var(--dark);
+    width: calc(100% - 60px);
+    height: 60px;
+    margin-left: 60px;
+    padding-left: 25px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 2;
+}
+
+.navbar .navbar-group {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 25px;
+}
+
+.navbar .navbar-group li {
+    list-style: none;
+}
+
+.navbar .navbar-group a {
+    position: relative;
+    color: var(--white);
+    text-decoration: none;
+    font-size: 1.2rem;
+    font-weight: 600;
+    outline: none;
+    border: none;
+}
+
+.navbar .navbar-group a::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -6px;
+    width: 100%;
+    height: 3px;
+    background: var(--white);
+    border-radius: 5px;
+    transform-origin: right;
+    transform: scaleX(0);
+    transition: transform 0.5s;
+}
+
+.navbar .navbar-group a:hover::after {
+    transform-origin: left;
+    transform: scaleX(1);
+}
+
+.navbar .navbar-group a.active {
+    color: var(--primary);
+}
+
+.navbar .navbar-group a.active::after {
+    transform-origin: left;
+    transform: scaleX(1);
+    background: var(--primary);
+}
+
+.library {
+    background: var(--light);
+    display: flex;
+    flex-direction: column;
+    width: calc(100% - 60px);
+    padding-top: 60px;
+    padding-left: 60px;
+    padding-bottom: 20px;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.library .library-group {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 20px;
+    align-items: center;
+    width: 100%;
+    margin-top: 20px;
+}
+
+.library .library-group .library-item {
+    aspect-ratio: 6 / 9;
+    width: calc(((100% - 20px) / 5) - 20px);
+    background: var(--dark);
+    border-radius: var(--border-radius);
+    box-shadow: 0px 0px 5px #000000AA;
+}
+
+.library .library-group .library-item img {
+    width: 100%;
+    height: 100%;
+    border-radius: var(--border-radius);
+    filter: brightness(0.8);
+}
