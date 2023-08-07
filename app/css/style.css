@@ -281,6 +281,11 @@ body {
 
 .browse .browse-group .browse-item .browse-item-about a.browse-item-about-description {
     font-size: 1rem;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    line-clamp: 1;
+    -webkit-box-orient: vertical;
     text-decoration: none;
     color: var(--gray);
 }
