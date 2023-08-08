@@ -60,7 +60,7 @@ function loadFromUrl() {
     function createBrowseImage(index, link) {
         let browseImage = document.createElement("img");
         let browseItem = document.getElementById("browse-item-" + index);
-        browseImage.setAttribute("src", link + "poster.png?raw=true");
+        browseImage.setAttribute("src", link + "banner.png?raw=true");
         browseItem.appendChild(browseImage);
     }
 

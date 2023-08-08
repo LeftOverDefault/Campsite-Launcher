@@ -1,8 +1,21 @@
 module.exports = {
   packagerConfig: {
     asar: true,
+    icon: "/public/icon"
   },
   rebuildConfig: {},
+  publishers: [
+    {
+      name: '@electron-forge/publisher-github',
+      config: {
+        repository: {
+          owner: "LeftOverDefault",
+          name: "Campsite-Launcher"
+        },
+        prerelease: true
+      }
+    }
+  ],
   makers: [
     {
       name: '@electron-forge/maker-squirrel',
@@ -14,11 +27,19 @@ module.exports = {
     },
     {
       name: '@electron-forge/maker-deb',
-      config: {},
+      config: {
+        options: {
+          icon: __dirname + "/public/icon.png"
+        }
+      },
     },
     {
       name: '@electron-forge/maker-rpm',
-      config: {},
+      config: {
+        options: {
+          icon: __dirname + "/public/icon.png"
+        }
+      },
     },
   ],
   plugins: [
