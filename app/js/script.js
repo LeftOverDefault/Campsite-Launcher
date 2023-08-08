@@ -104,10 +104,30 @@ function loadFromUrl() {
         const gameBackgroundContainer = document.createElement("div");
         const gameBackgroundImage = document.createElement("img");
         const gamePlaySection = document.createElement("div");
+        const gamePlayButton = document.createElement("button");
+        const gamePlayButtonSecondary1 = document.createElement("button");
+        const gamePlayButtonSecondary2 = document.createElement("button");
 
         gameBackgroundContainer.setAttribute("class", "background");
         gameBackgroundImage.setAttribute("src", link["url"] + "banner.png?raw=true");
         gamePlaySection.setAttribute("class", "game-play-section");
+
+        gamePlayButton.setAttribute("class", "button");
+        gamePlayButtonSecondary1.setAttribute("class", "button-secondary");
+        gamePlayButtonSecondary2.setAttribute("class", "button-secondary");
+        gamePlaySection.appendChild(gamePlayButtonSecondary1);
+        gamePlaySection.appendChild(gamePlayButton);
+        gamePlaySection.appendChild(gamePlayButtonSecondary2);
+
+        let shareButton = document.createElement("i");
+        let playButton = document.createElement("i");
+        let storeButton = document.createElement("i");
+        shareButton.setAttribute("class", "fa-solid fa-share-from-square");
+        playButton.setAttribute("class", "fa-solid fa-play");
+        storeButton.setAttribute("class", "fa-solid fa-store");
+        gamePlayButtonSecondary1.appendChild(shareButton);
+        gamePlayButton.appendChild(playButton);
+        gamePlayButtonSecondary2.appendChild(storeButton);
 
         gamePlayContainer.appendChild(gameBackgroundContainer);
         gameBackgroundContainer.appendChild(gameBackgroundImage);
@@ -222,12 +242,7 @@ function loadFromUrl() {
             gameWindow.classList.remove("active");
         });
 
-
         if (document.getElementById("sidenav-group-0").childElementCount != 9) {
-
-
-
-
             let libraryIcon = document.createElement("img");
             let libraryTooltip = document.createElement("span");
             let libraryIconItem = document.createElement("div");
@@ -260,12 +275,10 @@ function loadFromUrl() {
                 navbarOptions.classList.add("active");
                 browseWindow.classList.remove("active");
                 libraryWindow.classList.remove("active");
-                // gameWindow.classList.add("active");
                 for (let k = 0; k < gameWindowContainer.childElementCount; k++) {
                     let gameWindowId = document.getElementById("game-window-" + k.toString())
                     if (gameWindowId.classList.contains("active")) {
                         gameWindowId.classList.remove("active");
-                        console.log("removed active from " + gameWindowId)
                     }
                 }
                 gameWindow.classList.add("active");
