@@ -67,18 +67,50 @@ function loadFromUrl() {
     }
 
     function createLibraryImage(index, link, group) {
+        const browseItem = document.getElementById("browse-item");
+        const navbarOptions = document.getElementById("game-group");
+        const browseWindow = document.querySelector(".browse");
+        const libraryWindow = document.querySelector(".library");
         let name = link["name"];
         let description = link["description"];
         let libraryImage = document.createElement("img");
         let libraryItem = document.createElement("div");
+        const body = document.querySelector("body");
+        const gameWindow = document.createElement("section");
+        gameWindow.setAttribute("class", "game-window");
+        gameWindow.setAttribute("id", "game-window-" + index);
+        body.appendChild(gameWindow);
         const gamePlay = document.getElementById("game-play");
         const gameAbout = document.getElementById("game-about");
         const gameSettings = document.getElementById("game-settings");
         const gameInstallation = document.getElementById("game-installation");
-        const gamePlayContainer = document.querySelector(".game-play-container");
-        const gameAboutContainer = document.querySelector(".game-about-container");
-        const gameSettingsContainer = document.querySelector(".game-settings-container");
-        const gameInstallationContainer = document.querySelector(".game-installation-container");
+
+        const gamePlayContainer = document.createElement("div");
+        const gameAboutContainer = document.createElement("div");
+        const gameSettingsContainer = document.createElement("div");
+        const gameInstallationContainer = document.createElement("div");
+
+        gamePlayContainer.setAttribute("class", "game-play-container");
+        gameAboutContainer.setAttribute("class", "game-about-container");
+        gameSettingsContainer.setAttribute("class", "game-settings-container");
+        gameInstallationContainer.setAttribute("class", "game-installation-container");
+
+        gameWindow.appendChild(gamePlayContainer);
+        gameWindow.appendChild(gameAboutContainer);
+        gameWindow.appendChild(gameSettingsContainer);
+        gameWindow.appendChild(gameInstallationContainer);
+
+        const gameBackgroundContainer = document.createElement("div");
+        const gameBackgroundImage = document.createElement("img");
+        const gamePlaySection = document.createElement("div");
+
+        gameBackgroundContainer.setAttribute("class", "background");
+        gameBackgroundImage.setAttribute("src", link["url"] + "banner.png?raw=true");
+        gamePlaySection.setAttribute("class", "game-play-section");
+
+        gamePlayContainer.appendChild(gameBackgroundContainer);
+        gameBackgroundContainer.appendChild(gameBackgroundImage);
+        gamePlayContainer.appendChild(gamePlaySection);
 
         libraryImage.setAttribute("src", link["url"] + "poster.png?raw=true");
         libraryItem.setAttribute("class", "library-item");
@@ -89,7 +121,6 @@ function loadFromUrl() {
             const browseItem = document.getElementById("browse-item");
             const libraryItem = document.getElementById("library-item");
             const navbarOptions = document.getElementById("game-group");
-            const gameWindow = document.getElementById("game-window-" + index);
             const browseWindow = document.querySelector(".browse");
             const libraryWindow = document.querySelector(".library");
             gamePlay.classList.add("active");
@@ -157,6 +188,24 @@ function loadFromUrl() {
                 gameSettingsContainer.classList.remove("active");
                 gameInstallationContainer.classList.add("active");
             });
+
+            browseItem.addEventListener("click", () => {
+                browseItem.classList.add("active");
+                libraryItem.classList.remove("active");
+                browseWindow.classList.add("active");
+                libraryWindow.classList.remove("active");
+                navbarOptions.classList.remove("active");
+                gameWindow.classList.remove("active");
+            });
+
+            libraryItem.addEventListener("click", () => {
+                browseItem.classList.remove("active");
+                libraryItem.classList.add("active");
+                browseWindow.classList.remove("active");
+                libraryWindow.classList.add("active");
+                navbarOptions.classList.remove("active");
+                gameWindow.classList.remove("active");
+            });
         });
 
         if (document.getElementById("sidenav-group-0").childElementCount != 9) {
@@ -178,7 +227,6 @@ function loadFromUrl() {
                 const browseItem = document.getElementById("browse-item");
                 const libraryItem = document.getElementById("library-item");
                 const navbarOptions = document.getElementById("game-group");
-                const gameWindow = document.getElementById("game-window-" + index);
                 const gamePlayContainer = document.querySelector(".game-play-container");
                 const gameAboutContainer = document.querySelector(".game-about-container");
                 const gameSettingsContainer = document.querySelector(".game-settings-container");
@@ -251,6 +299,24 @@ function loadFromUrl() {
                     gameSettingsContainer.classList.remove("active");
                     gameInstallationContainer.classList.add("active");
                 });
+
+                browseItem.addEventListener("click", () => {
+                    browseItem.classList.add("active");
+                    libraryItem.classList.remove("active");
+                    browseWindow.classList.add("active");
+                    libraryWindow.classList.remove("active");
+                    navbarOptions.classList.remove("active");
+                    gameWindow.classList.remove("active");
+                });
+
+                libraryItem.addEventListener("click", () => {
+                    browseItem.classList.remove("active");
+                    libraryItem.classList.add("active");
+                    browseWindow.classList.remove("active");
+                    libraryWindow.classList.add("active");
+                    navbarOptions.classList.remove("active");
+                    gameWindow.classList.remove("active");
+                });
             });
         }
     }
@@ -258,27 +324,3 @@ function loadFromUrl() {
 
 loadFromUrl()
 
-const browseItem = document.getElementById("browse-item");
-const libraryItem = document.getElementById("library-item");
-const navbarOptions = document.getElementById("game-group");
-const browseWindow = document.querySelector(".browse");
-const libraryWindow = document.querySelector(".library");
-const gameWindow = document.querySelector(".game-window");
-
-browseItem.addEventListener("click", () => {
-    browseItem.classList.add("active");
-    libraryItem.classList.remove("active");
-    browseWindow.classList.add("active");
-    libraryWindow.classList.remove("active");
-    navbarOptions.classList.remove("active");
-    gameWindow.classList.remove("active");
-});
-
-libraryItem.addEventListener("click", () => {
-    browseItem.classList.remove("active");
-    libraryItem.classList.add("active");
-    browseWindow.classList.remove("active");
-    libraryWindow.classList.add("active");
-    navbarOptions.classList.remove("active");
-    gameWindow.classList.remove("active");
-});

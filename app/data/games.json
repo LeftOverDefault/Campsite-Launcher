@@ -4,6 +4,11 @@
             "name": "Summer Project",
             "description": "Description of Summer Project.",
             "url": "https://github.com/LeftOverDefault/Summer-Project/blob/main/properties/"
+        },
+        "1": {
+            "name": "Game",
+            "description": "Description of Game",
+            "url": "https://github.com/LeftOverDefault/Game/blob/main/"
         }
     },
     "library": {
@@ -11,6 +16,11 @@
             "name": "Summer Project",
             "description": "Description of Summer Project.",
             "url": "https://github.com/LeftOverDefault/Summer-Project/blob/main/properties/"
+        },
+        "1": {
+            "name": "Game",
+            "description": "Description of Game",
+            "url": "https://github.com/LeftOverDefault/Game/blob/main/"
         }
     }
 }
