@@ -297,6 +297,38 @@ html {
     color: var(--gray);
 }
 
+.browse .featured-section {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background: var(--dark);
+    gap: 20px;
+    align-items: flex-start;
+    width: 100%;
+    padding-left: 40px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.browse .featured-section .featured-title {
+    color: var(--white);
+    padding-top: 15px;
+    font-size: 1.8rem;
+    font-weight: 600;
+
+}
+
+.browse .featured-section .featured-group {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    width: 100%;
+}
+
+.browse .featured-section .featured-item {}
+
 .library {
     position: absolute;
     background: var(--light);
