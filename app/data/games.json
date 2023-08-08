@@ -1,9 +1,9 @@
 {
     "browse": {
         "0": {
-            "name": "Summer Project",
-            "description": "Description of Summer Project.",
-            "url": "https://github.com/LeftOverDefault/Summer-Project/blob/main/properties/"
+            "name": "Stranded Voices",
+            "description": "Stranded Voices is a space-themed game designed to immerse users in a text-based futuristic dystopian universe. It combines elements of cybernetics, advanced technology and detailed lore to create an immersive experience.",
+            "url": "https://github.com/LeftOverDefault/Stranded-Voices/blob/main/properties/"
         },
         "1": {
             "name": "Game",
@@ -15,52 +15,7 @@
         "0": {
             "name": "Summer Project",
             "description": "Description of Summer Project.",
-            "url": "https://github.com/LeftOverDefault/Summer-Project/blob/main/properties/"
-        },
-        "1": {
-            "name": "Game",
-            "description": "Description of Game",
-            "url": "https://github.com/LeftOverDefault/Game/blob/main/"
-        },
-        "2": {
-            "name": "Summer Project",
-            "description": "Description of Summer Project.",
-            "url": "https://github.com/LeftOverDefault/Summer-Project/blob/main/properties/"
-        },
-        "3": {
-            "name": "Game",
-            "description": "Description of Game",
-            "url": "https://github.com/LeftOverDefault/Game/blob/main/"
-        },
-        "4": {
-            "name": "Summer Project",
-            "description": "Description of Summer Project.",
-            "url": "https://github.com/LeftOverDefault/Summer-Project/blob/main/properties/"
-        },
-        "5": {
-            "name": "Summer Project",
-            "description": "Description of Summer Project.",
-            "url": "https://github.com/LeftOverDefault/Summer-Project/blob/main/properties/"
-        },
-        "6": {
-            "name": "Game",
-            "description": "Description of Game",
-            "url": "https://github.com/LeftOverDefault/Game/blob/main/"
-        },
-        "7": {
-            "name": "Summer Project",
-            "description": "Description of Summer Project.",
-            "url": "https://github.com/LeftOverDefault/Summer-Project/blob/main/properties/"
-        },
-        "8": {
-            "name": "Game",
-            "description": "Description of Game",
-            "url": "https://github.com/LeftOverDefault/Game/blob/main/"
-        },
-        "9": {
-            "name": "Summer Project",
-            "description": "Description of Summer Project.",
-            "url": "https://github.com/LeftOverDefault/Summer-Project/blob/main/properties/"
+            "url": "https://github.com/LeftOverDefault/Stranded-Voices/blob/main/properties/"
         }
     }
 }
