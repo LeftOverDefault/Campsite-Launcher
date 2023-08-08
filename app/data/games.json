@@ -6,5 +6,11 @@
             "url": "https://github.com/LeftOverDefault/Summer-Project/blob/main/properties/"
         }
     },
-    "library": {}
+    "library": {
+        "0": {
+            "name": "Summer Project",
+            "description": "Description of Summer Project.",
+            "url": "https://github.com/LeftOverDefault/Summer-Project/blob/main/properties/"
+        }
+    }
 }

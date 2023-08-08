@@ -53,6 +53,8 @@ html {
     align-items: center;
     justify-content: space-between;
     z-index: 3;
+    /* box-shadow: 10px 0px 15px #00000060; */
+    /* box-shadow: 10px 0px 15px -10px rgba(0, 0, 0, 0.7); */
 }
 
 .sidenav .sidenav-group {
@@ -64,6 +66,7 @@ html {
     gap: 5px;
     padding-top: 10px;
     padding-bottom: 10px;
+    z-index: 3;
 }
 
 .sidenav .sidenav-group .sidenav-item {
@@ -124,20 +127,24 @@ html {
     opacity: 1;
     visibility: visible;
     transition: opacity 0.25s ease;
-    box-shadow: 0px 0px 5px #00000075;
+    box-shadow: 0px 0px 5px #00000060;
 }
 
 .navbar {
     position: fixed;
     background: var(--dark);
-    width: calc(100% - 60px);
+    width: calc(100% - 110px);
     height: 60px;
     margin-left: 60px;
     padding-left: 25px;
+    padding-right: 25px;
     display: flex;
     justify-content: space-between;
     align-items: center;
     z-index: 2;
+    box-shadow: 0px 0px 15px #00000060;
+    -webkit-clip-path: inset(-10px -10px -10px 0px);
+    clip-path: inset(-10px -10px -10px 0px);
 }
 
 .navbar .navbar-group {
@@ -145,7 +152,13 @@ html {
     flex-direction: row;
     justify-content: center;
     align-items: center;
+    opacity: 0;
     gap: 25px;
+    transition: opacity 0.5s ease;
+}
+
+.navbar .navbar-group.active {
+    opacity: 1;
 }
 
 .navbar .navbar-group li {
@@ -183,7 +196,6 @@ html {
 }
 
 .navbar .navbar-group a.active {
-    /* color: var(--primary); */
     transition: color 0.5s ease;
 }
 
@@ -196,8 +208,8 @@ html {
 
 .browse {
     position: absolute;
-    height: (100% - 60px);
     overflow: hidden;
+    height: calc(100% - 80px);
     left: -110%;
     visibility: hidden;
     background: var(--light);
@@ -205,17 +217,18 @@ html {
     flex-direction: column;
     width: calc(100% - 60px);
     padding-top: 60px;
-    padding-left: 60px;
+    margin-left: 60px;
     padding-bottom: 20px;
     align-items: center;
     justify-content: flex-start;
     transition: left 0.5s ease, visibility 0.5s ease;
+    z-index: 1;
 }
 
 .browse.active {
-    overflow: auto;
-    left: 0;
+    overflow-y: visible;
     visibility: visible;
+    left: 0;
 }
 
 .browse .browse-group {
@@ -248,11 +261,10 @@ html {
 
 .browse .browse-group .browse-item .browse-item-image {
     width: 100%;
-    height: 100%;
-    aspect-ratio: 3 / 2;
 }
 
 .browse .browse-group .browse-item .browse-item-image img {
+    aspect-ratio: 24 / 13;
     height: 100%;
     width: 100%;
     border-top-left-radius: var(--border-radius);
@@ -306,8 +318,9 @@ html {
     align-items: flex-start;
     width: 100%;
     padding-left: 40px;
+    padding-bottom: 20px;
     margin-top: 20px;
-    margin-bottom: 20px;
+    z-index: 1;
 }
 
 .browse .featured-section .featured-title {
@@ -321,13 +334,79 @@ html {
 .browse .featured-section .featured-group {
     display: flex;
     flex-direction: row;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
     gap: 20px;
     width: 100%;
 }
 
-.browse .featured-section .featured-item {}
+.browse .featured-section .featured-group .featured-item {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: calc(((100% - 20px) / 2) - 20px);
+    aspect-ratio: 6 / 4;
+    transform: scale(1);
+    background: var(--dark);
+    border-radius: var(--border-radius);
+    box-shadow: 0px 0px 15px #00000060;
+    transition: transform 0.5s ease;
+}
+
+.browse .featured-section .featured-group .featured-item:hover {
+    transform: scale(1.05);
+}
+
+.browse .featured-section .featured-group .featured-item .featured-item-image {
+    width: 100%;
+}
+
+.browse .featured-section .featured-group .featured-item .featured-item-image img {
+    aspect-ratio: 24 / 13;
+    height: 100%;
+    width: 100%;
+    border-top-left-radius: var(--border-radius);
+    border-top-right-radius: var(--border-radius);
+}
+
+.browse .featured-section .featured-group .featured-item .featured-item-about {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    width: 100%;
+    padding-top: 10px;
+    padding-bottom: 15px;
+}
+
+.browse .featured-section .featured-group .featured-item .featured-item-about li {
+    padding-left: 10px;
+    list-style: none;
+}
+
+.browse .featured-section .featured-group .featured-item .featured-item-about a.featured-item-about-name {
+    text-decoration: none;
+    font-size: 1.6rem;
+    color: var(--white);
+    cursor: pointer;
+    transition: color 0.25s ease;
+}
+
+.browse .featured-section .featured-group .featured-item .featured-item-about a.featured-item-about-name:hover {
+    color: var(--primary);
+}
+
+.browse .featured-section .featured-group .featured-item .featured-item-about a.featured-item-about-description {
+    font-size: 1rem;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
+    -webkit-box-orient: vertical;
+    text-decoration: none;
+    color: var(--gray);
+}
 
 .library {
     position: absolute;
@@ -382,4 +461,51 @@ html {
 
 .library .library-group .library-item img:hover {
     transform: scale(1.05);
+}
+
+.game-window {
+    position: absolute;
+    visibility: hidden;
+    bottom: -110%;
+    overflow: hidden;
+    width: calc(100% - 60px);
+    height: calc(100% - 60px);
+    margin-top: 60px;
+    margin-left: 60px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    transition: bottom 0.5s ease, visibility 0.5s ease;
+    z-index: 1;
+}
+
+.game-window.active {
+    visibility: visible;
+    bottom: 0;
+}
+
+.game-window .game-play-container {
+    display: none;
+    width: 100%;
+}
+
+.game-window .game-play-container.active {
+    display: inline;
+}
+
+.game-window .game-play-container .background {
+    width: 100%;
+}
+
+.game-window .game-play-container .background img {
+    aspect-ratio: 24 / 13;
+    height: 100%;
+    width: 100%;
+}
+
+.game-window .game-play-container .game-play {
+    width: 100%;
+    height: 100%;
+    background: var(--dark);
 }
