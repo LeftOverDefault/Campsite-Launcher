@@ -31,8 +31,6 @@ function loadFromUrl() {
         }
     });
 
-    function createGameScreen(index) { }
-
     function createLibraryGroup(library, index) {
         let libraryGroup = document.createElement("div");
         libraryGroup.setAttribute("class", "library-group");
@@ -67,19 +65,22 @@ function loadFromUrl() {
     }
 
     function createLibraryImage(index, link, group) {
-        const browseItem = document.getElementById("browse-item");
+        const gameWindowContainer = document.querySelector(".game-window-container");
+        const browseLink = document.getElementById("browse-item");
+        const libraryLink = document.getElementById("library-item");
         const navbarOptions = document.getElementById("game-group");
+
         const browseWindow = document.querySelector(".browse");
         const libraryWindow = document.querySelector(".library");
+        const gameWindow = document.createElement("div");
+
         let name = link["name"];
         let description = link["description"];
         let libraryImage = document.createElement("img");
         let libraryItem = document.createElement("div");
-        const body = document.querySelector("body");
-        const gameWindow = document.createElement("section");
         gameWindow.setAttribute("class", "game-window");
         gameWindow.setAttribute("id", "game-window-" + index);
-        body.appendChild(gameWindow);
+        gameWindowContainer.appendChild(gameWindow);
         const gamePlay = document.getElementById("game-play");
         const gameAbout = document.getElementById("game-about");
         const gameSettings = document.getElementById("game-settings");
@@ -118,11 +119,6 @@ function loadFromUrl() {
         libraryItem.appendChild(libraryImage);
         group.appendChild(libraryItem);
         libraryItem.addEventListener("click", () => {
-            const browseItem = document.getElementById("browse-item");
-            const libraryItem = document.getElementById("library-item");
-            const navbarOptions = document.getElementById("game-group");
-            const browseWindow = document.querySelector(".browse");
-            const libraryWindow = document.querySelector(".library");
             gamePlay.classList.add("active");
             gameAbout.classList.remove("active");
             gameSettings.classList.remove("active");
@@ -133,8 +129,8 @@ function loadFromUrl() {
             gameSettingsContainer.classList.remove("active");
             gameInstallationContainer.classList.remove("active");
             gamePlay.classList.add("active");
-            browseItem.classList.remove("active");
-            libraryItem.classList.remove("active");
+            browseLink.classList.remove("active");
+            libraryLink.classList.remove("active");
             navbarOptions.classList.add("active");
             browseWindow.classList.remove("active");
             libraryWindow.classList.remove("active");
@@ -189,18 +185,18 @@ function loadFromUrl() {
                 gameInstallationContainer.classList.add("active");
             });
 
-            browseItem.addEventListener("click", () => {
-                browseItem.classList.add("active");
-                libraryItem.classList.remove("active");
+            browseLink.addEventListener("click", () => {
+                browseLink.classList.add("active");
+                libraryLink.classList.remove("active");
                 browseWindow.classList.add("active");
                 libraryWindow.classList.remove("active");
                 navbarOptions.classList.remove("active");
                 gameWindow.classList.remove("active");
             });
 
-            libraryItem.addEventListener("click", () => {
-                browseItem.classList.remove("active");
-                libraryItem.classList.add("active");
+            libraryLink.addEventListener("click", () => {
+                browseLink.classList.remove("active");
+                libraryLink.classList.add("active");
                 browseWindow.classList.remove("active");
                 libraryWindow.classList.add("active");
                 navbarOptions.classList.remove("active");
@@ -208,7 +204,30 @@ function loadFromUrl() {
             });
         });
 
+        browseLink.addEventListener("click", () => {
+            browseLink.classList.add("active");
+            libraryLink.classList.remove("active");
+            browseWindow.classList.add("active");
+            libraryWindow.classList.remove("active");
+            navbarOptions.classList.remove("active");
+            gameWindow.classList.remove("active");
+        });
+
+        libraryLink.addEventListener("click", () => {
+            browseLink.classList.remove("active");
+            libraryLink.classList.add("active");
+            browseWindow.classList.remove("active");
+            libraryWindow.classList.add("active");
+            navbarOptions.classList.remove("active");
+            gameWindow.classList.remove("active");
+        });
+
+
         if (document.getElementById("sidenav-group-0").childElementCount != 9) {
+
+
+
+
             let libraryIcon = document.createElement("img");
             let libraryTooltip = document.createElement("span");
             let libraryIconItem = document.createElement("div");
@@ -223,16 +242,8 @@ function loadFromUrl() {
             libraryTooltip.textContent = name;
             libraryIconItem.appendChild(libraryTooltip);
 
-            libraryIcon.addEventListener("click", () => {
-                const browseItem = document.getElementById("browse-item");
-                const libraryItem = document.getElementById("library-item");
-                const navbarOptions = document.getElementById("game-group");
-                const gamePlayContainer = document.querySelector(".game-play-container");
-                const gameAboutContainer = document.querySelector(".game-about-container");
-                const gameSettingsContainer = document.querySelector(".game-settings-container");
-                const gameInstallationContainer = document.querySelector(".game-installation-container");
-                const browseWindow = document.querySelector(".browse");
-                const libraryWindow = document.querySelector(".library");
+
+            libraryIconItem.addEventListener("click", () => {
                 gamePlay.classList.add("active");
                 gameAbout.classList.remove("active");
                 gameSettings.classList.remove("active");
@@ -244,11 +255,19 @@ function loadFromUrl() {
                 gameInstallationContainer.classList.remove("active");
 
                 gamePlay.classList.add("active");
-                browseItem.classList.remove("active");
-                libraryItem.classList.remove("active");
+                browseLink.classList.remove("active");
+                libraryLink.classList.remove("active");
                 navbarOptions.classList.add("active");
                 browseWindow.classList.remove("active");
                 libraryWindow.classList.remove("active");
+                // gameWindow.classList.add("active");
+                for (let k = 0; k < gameWindowContainer.childElementCount; k++) {
+                    let gameWindowId = document.getElementById("game-window-" + k.toString())
+                    if (gameWindowId.classList.contains("active")) {
+                        gameWindowId.classList.remove("active");
+                        console.log("removed active from " + gameWindowId)
+                    }
+                }
                 gameWindow.classList.add("active");
                 gamePlayContainer.classList.add("active");
 
@@ -300,18 +319,18 @@ function loadFromUrl() {
                     gameInstallationContainer.classList.add("active");
                 });
 
-                browseItem.addEventListener("click", () => {
-                    browseItem.classList.add("active");
-                    libraryItem.classList.remove("active");
+                browseLink.addEventListener("click", () => {
+                    browseLink.classList.add("active");
+                    libraryLink.classList.remove("active");
                     browseWindow.classList.add("active");
                     libraryWindow.classList.remove("active");
                     navbarOptions.classList.remove("active");
                     gameWindow.classList.remove("active");
                 });
 
-                libraryItem.addEventListener("click", () => {
-                    browseItem.classList.remove("active");
-                    libraryItem.classList.add("active");
+                libraryLink.addEventListener("click", () => {
+                    browseLink.classList.remove("active");
+                    libraryLink.classList.add("active");
                     browseWindow.classList.remove("active");
                     libraryWindow.classList.add("active");
                     navbarOptions.classList.remove("active");
@@ -323,4 +342,3 @@ function loadFromUrl() {
 }
 
 loadFromUrl()
-
