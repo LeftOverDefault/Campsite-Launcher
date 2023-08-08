@@ -10,9 +10,7 @@ function readTextFile(file, callback) {
     rawFile.send(null);
 }
 
-
 function loadFromUrl() {
-
     readTextFile("../app/data/games.json", function (text) {
         let data = JSON.parse(text);
         for (let i = 0; i < Object.keys(data["browse"]).length; i++) {
@@ -20,31 +18,33 @@ function loadFromUrl() {
             createBrowseName(i, data["browse"][i]["name"]);
             createBrowseDescription(i, data["browse"][i]["description"]);
         }
-        let library = document.querySelector(".library");
         let i = 0;
+        let library = document.querySelector(".library");
         for (let j = 0; j < Object.keys(data["library"]).length; j++) {
-            let libraryGroup = document.createElement("div");
-            libraryGroup.setAttribute("class", "library-group");
-            libraryGroup.setAttribute("id", "library-group-" + i.toString());
             if (document.getElementById("sidenav-group-0").childElementCount != 9) {
-                createLibraryIcon(j, data["library"][j], document.getElementById("sidenav-group-0"))
+                createLibraryIcon(j, data["library"][j], document.getElementById("sidenav-group-0"));
             }
-
-            if (libraryGroup.childElementCount % 5 == 0) {
+            if (j % 5 == 0) {
+                libraryGroup = createLibraryGroup(library, i);
                 createLibraryImage(j, data["library"][j], libraryGroup);
+                i++;
             } else {
                 createLibraryImage(j, data["library"][j], libraryGroup);
             }
-            i++;
-            console.log(libraryGroup.childElementCount);
-            library.appendChild(libraryGroup);
         }
     });
+
+    function createLibraryGroup(library, index) {
+        let libraryGroup = document.createElement("div");
+        libraryGroup.setAttribute("class", "library-group");
+        libraryGroup.setAttribute("id", "library-group-" + index.toString());
+        library.appendChild(libraryGroup);
+        return libraryGroup;
+    }
 
     function createLibraryIcon(index, link, group) {
         let libraryIcon = document.createElement("img");
         let libraryTooltip = document.createElement("span");
-        // let libraryItem = document.getElementById("sidenav-item-" + index);
         let libraryItem = document.createElement("div");
         libraryItem.setAttribute("class", "sidenav-item");
         libraryItem.setAttribute("id", "sidenav-item-" + index);
